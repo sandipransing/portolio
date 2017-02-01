@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Email</th>
       <th>Birth date</th>
       <th>Years of experience</th>
       <th>Bio</th>
@@ -17,6 +18,7 @@
     <% @employees.each do |employee| %>
       <tr>
         <td><%= employee.name %></td>
+        <td><%= employee.email %></td>
         <td><%= employee.birth_date.to_s(:long) %></td>
         <td><%= employee.years_of_experience %> year(s)</td>
         <td><%= truncate(employee.bio) %></td>
