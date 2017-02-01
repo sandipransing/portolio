@@ -1,24 +1,28 @@
-# README
+# Sample App: Portfolio
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is just an example app to cover the various concepts in Rails.
 
-Things you may want to cover:
+1. Create new Project 
 
-* Ruby version
+  rails new portfolio
 
-* System dependencies
+2. Create Employee Scaffold
 
-* Configuration
+  rails g scaffold employee name:string birth_date:date years_of_experience:integer bio:text
 
-* Database creation
+3. Run Migrations
 
-* Database initialization
+  rails db:migrate
 
-* How to run the test suite
+4. Start Server
 
-* Services (job queues, cache servers, search engines, etc.)
+  rails s
 
-* Deployment instructions
+5. Add new email field
 
-* ...
+  rails g migration add_email_to_employees email:string:index
+  rails db:migrate
+
+
+That's it. Keep adding more info here.
+
