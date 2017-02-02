@@ -12,8 +12,20 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :salutation %>
+    <%= f.select :salutation, Employee.salutations.keys.map { |k| [k.capitalize, k] } %>
+  </div>
+
+  <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gender %>
+    <% Employee.genders.keys.each do |gender | %>
+      <%= f.radio_button :gender, gender %> <%= gender.humanize %>
+    <% end %>
   </div>
 
   <div class="field">
@@ -34,6 +46,11 @@
   <div class="field">
     <%= f.label :bio %>
     <%= f.text_area :bio %>
+  </div>
+
+  <div class="field">
+    <%= f.label :eula, 'I agree with the Terms & Conditions' %>
+    <%= f.check_box :eula %>
   </div>
 
   <div class="actions">

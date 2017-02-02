@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170201110101) do
+ActiveRecord::Schema.define(version: 20170202110625) do
 
   create_table "employees", force: :cascade do |t|
     t.string   "name"
@@ -18,9 +18,12 @@ ActiveRecord::Schema.define(version: 20170201110101) do
     t.date     "birth_date"
     t.integer  "years_of_experience"
     t.text     "bio"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "email"
+    t.boolean  "eula"
+    t.integer  "salutation"
+    t.integer  "gender",              default: 2
     t.index ["email"], name: "index_employees_on_email"
   end
 
