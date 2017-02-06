@@ -17,10 +17,15 @@ class EmployeesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create employee" do
     assert_difference('Employee.count') do
-      post employees_url, params: { employee: { bio: @employee.bio, birth_date: @employee.birth_date, name: @employee.name, years_of_experience: @employee.years_of_experience } }
+      post employees_url, params: { employee: { bio: @employee.bio, 
+        birth_date: @employee.birth_date, 
+        name: @employee.name, years_of_experience: @employee.years_of_experience, 
+        email: 'test@gmail.com', 
+        salutation: @employee.salutation } }
     end
 
     assert_redirected_to employee_url(Employee.last)
+    assert_equal 'Employee was successfully created.', flash[:notice]
   end
 
   test "should show employee" do
@@ -34,7 +39,8 @@ class EmployeesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update employee" do
-    patch employee_url(@employee), params: { employee: { bio: @employee.bio, birth_date: @employee.birth_date, name: @employee.name, years_of_experience: @employee.years_of_experience } }
+    patch employee_url(@employee), params: { employee: { bio: @employee.bio, birth_date: @employee.birth_date, 
+      name: @employee.name, years_of_experience: @employee.years_of_experience } }
     assert_redirected_to employee_url(@employee)
   end
 
@@ -44,5 +50,31 @@ class EmployeesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to employees_url
+  end
+
+  test "should not create employee with same email" do
+    count1 = Employee.count
+    post employees_url, params: { employee: { bio: @employee.bio, birth_date: @employee.birth_date, 
+        name: @employee.name, years_of_experience: @employee.years_of_experience, email: @employee.email, 
+        salutation: @employee.salutation } }
+    count2 = Employee.count
+    assert_equal count1, count2     
+  end
+
+  test "should not create employee without email" do
+    count1 = Employee.count
+    post employees_url, params: { employee: { bio: @employee.bio, birth_date: @employee.birth_date, 
+        name: @employee.name, years_of_experience: @employee.years_of_experience, 
+        salutation: @employee.salutation } }
+    count2 = Employee.count
+    assert_equal count1, count2     
+  end
+
+  test "should not create employee without salutation" do
+    count1 = Employee.count
+    post employees_url, params: { employee: { bio: @employee.bio, birth_date: @employee.birth_date, 
+        name: @employee.name, years_of_experience: @employee.years_of_experience, email: 'test1@gmail.com'} }
+    count2 = Employee.count
+    assert_equal count1, count2     
   end
 end
