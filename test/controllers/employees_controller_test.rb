@@ -1,4 +1,5 @@
-require 'test_helper'
+# require 'test_helper'
+require '/home/synerzip/portolio/portolio/test/test_helper.rb'
 
 class EmployeesControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -17,7 +18,7 @@ class EmployeesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create employee" do
     assert_difference('Employee.count') do
-      post employees_url, params: { employee: { bio: @employee.bio, birth_date: @employee.birth_date, name: @employee.name, years_of_experience: @employee.years_of_experience } }
+      post employees_url, params: { employee: { email: 'a@example.com', salutation: :mr, bio: @employee.bio, birth_date: @employee.birth_date, name: @employee.name, years_of_experience: @employee.years_of_experience } }
     end
 
     assert_redirected_to employee_url(Employee.last)

@@ -1,12 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  salutation: :mr
+  email: abc@example.com
   name: MyString
   birth_date: 2017-01-31
   years_of_experience: 1
   bio: MyText
 
 two:
+  salutation: :mrs
+  email: abc1@example.co
   name: MyString
   birth_date: 2017-01-31
   years_of_experience: 1
